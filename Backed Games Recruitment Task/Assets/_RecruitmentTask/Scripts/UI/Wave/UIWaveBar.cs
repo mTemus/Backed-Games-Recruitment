@@ -33,7 +33,7 @@ namespace Assets._RecruitmentTask.Scripts.UI.Wave
             UpdateProgress();   
         }
 
-        public void OnEnemyDied(EnemiesController.EnemyDeathData data)
+        public void OnEnemyDied(EnemiesManager.EnemyDeathData data)
         {
             m_currentProgress += data.Points;
             UpdateProgress();

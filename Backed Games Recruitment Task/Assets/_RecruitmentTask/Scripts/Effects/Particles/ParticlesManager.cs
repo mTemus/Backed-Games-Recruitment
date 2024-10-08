@@ -9,7 +9,7 @@ namespace Assets._RecruitmentTask.Scripts.Effects.Particles
         [SerializeField]
         private EnemyDeathParticles m_deathParticlesPrefab;
 
-        public void OnEnemyDied(EnemiesController.EnemyDeathData data)
+        public void OnEnemyDied(EnemiesManager.EnemyDeathData data)
         {
             new CustomParticlesSystem.Builder()
                 .WithPrefab(m_deathParticlesPrefab)

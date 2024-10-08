@@ -10,7 +10,7 @@ namespace Assets._RecruitmentTask.Scripts.Player
         [SerializeField]
         private ScriptableSubscriptableValueInt m_playerPoints;
 
-        public void OnEnemyDied(EnemiesController.EnemyDeathData data)
+        public void OnEnemyDied(EnemiesManager.EnemyDeathData data)
         {
             m_playerPoints.Value.Value += data.Points;
         }
