@@ -837,8 +837,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Backed Games Recruitment Task
-  metroPackageVersion: 
+  metroPackageName: BackedGamesRecruitmentTask
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -846,7 +846,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Backed Games Recruitment Task
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Backed Games Recruitment Task
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
