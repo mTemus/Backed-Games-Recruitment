@@ -1,4 +1,3 @@
-using Assets._RecruitmentTask.Scripts.Architecture.Events.ConcreteEvents;
 using Assets._RecruitmentTask.Scripts.Architecture.Other.SubscriptableValue.ConcreteScriptableValue;
 using Assets.Repos.Codebase.Code.Core.SubscripableValue;
 using TMPro;
@@ -14,13 +13,6 @@ namespace Assets._RecruitmentTask.Scripts.UI.Enemy
 
         [SerializeField]
         private ScriptableSubscriptableValueFloat m_spawnTimerValue;
-
-        [Header("Events")] 
-        [SerializeField] 
-        private ScriptableEventEmpty m_onGameStart;
-
-        [SerializeField] 
-        private ScriptableEventEmpty m_onGameOver;
 
         public void OnGameStart()
         {

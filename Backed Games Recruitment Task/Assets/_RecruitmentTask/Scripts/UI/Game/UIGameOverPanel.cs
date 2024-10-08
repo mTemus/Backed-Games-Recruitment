@@ -13,6 +13,11 @@ namespace Assets._RecruitmentTask.Scripts.UI.Game
         [SerializeField] 
         private TextMeshProUGUI m_scoreText;
 
+        private void Awake()
+        {
+            Hide();
+        }
+
         public override void Show()
         {
             m_scoreText.text = m_playerPoints.Value.ToString();

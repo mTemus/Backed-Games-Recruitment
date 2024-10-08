@@ -14,12 +14,12 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Events.Listeners
         [SerializeField] 
         private UnityEvent<T> m_unityEvent;
 
-        private void Awake()
+        protected void Awake()
         {
             m_scriptableEvent.RegisterListener(this);
         }
 
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             m_scriptableEvent.UnregisterListener(this);
         }
