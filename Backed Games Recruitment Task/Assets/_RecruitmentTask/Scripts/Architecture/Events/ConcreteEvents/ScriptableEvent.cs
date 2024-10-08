@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Assets._RecruitmentTask.Scripts.Architecture.Events.Listeners;
 using UnityEngine;
 
-namespace Assets._RecruitmentTask.Scripts.Architecture.Events.Events
+namespace Assets._RecruitmentTask.Scripts.Architecture.Events.ConcreteEvents
 {
     public abstract class ScriptableEvent<T> : ScriptableObject
     {
