@@ -8,6 +8,6 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Other.SubscriptableValue
         [SerializeField] 
         private SubscriptableValue<T> m_value;
 
-        public SubscriptableValue<T> MValue => m_value;
+        public SubscriptableValue<T> Value => m_value;
     }
 }

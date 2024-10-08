@@ -11,13 +11,10 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         private Renderer m_renderer;
 
         private Color m_myColor;
-        private IEnemyParent m_parent;
 
-        public IEnemyParent Parent
-        {
-            get => m_parent;
-            set => m_parent = value;
-        }
+        public int Points { get; set; }
+        public IEnemyParent Parent { get; set; }
+
 
         public void SetColor(Color color)
         {
@@ -34,7 +31,7 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
         public void Interact(GameObject interactor, Vector3 position)
         {
-            m_parent.OnEnemyDeath(this);
+            Parent.OnEnemyDeath(this);
         }
 
         #endregion
@@ -48,7 +45,7 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         public void OnDespawn()
         {
             m_myColor = Color.clear;
-            m_parent = null;
+            Parent = null;
         }
 
         #endregion
@@ -63,6 +60,7 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
             private Vector3 m_position;
             private Transform m_parentTransform;
             private EnemyBase m_prefab;
+            private int m_points = -1;
 
             public Builder WithRandomColor()
             {
@@ -100,6 +98,12 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
                 return this;
             }
 
+            public Builder WithPoints(int points)
+            {
+                m_points = points;
+                return this;
+            }
+
             public EnemyBase Build()
             {
                 if (m_prefab == null)
@@ -116,6 +120,15 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
                 if (m_scale > float.NegativeInfinity)
                     instance.SetScale(m_scale);
+
+                if (m_points > -1)
+                {
+                    instance.Points = m_points;
+                }
+                else
+                {
+                    Debug.LogError($"EnemyBuilder --- Points for enemy were not set!");
+                }
 
                 return instance;
             }

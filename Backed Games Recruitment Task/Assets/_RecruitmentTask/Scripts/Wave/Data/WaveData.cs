@@ -20,5 +20,6 @@ namespace Assets._RecruitmentTask.Scripts.Wave.Data
         public int PointsToEarn => m_pointsToEarn;
         public float EnemiesSpawnTime => m_enemiesSpawnTime;
         public EnemyDataSO[] Enemies => m_enemies;
+        public EnemyDataSO RandomEnemyData => m_enemies.Length == 1 ? m_enemies[0] : m_enemies[Random.Range(0, m_enemies.Length)];
     }
 }
