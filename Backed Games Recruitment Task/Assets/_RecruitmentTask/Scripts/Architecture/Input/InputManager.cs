@@ -1,4 +1,4 @@
-using Assets._RecruitmentTask.Scripts.Architecture.Events.Events;
+using Assets._RecruitmentTask.Scripts.Architecture.Events.ConcreteEvents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
