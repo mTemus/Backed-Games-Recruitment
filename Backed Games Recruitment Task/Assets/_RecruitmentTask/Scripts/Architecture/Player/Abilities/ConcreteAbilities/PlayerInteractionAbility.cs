@@ -4,7 +4,8 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Player.Abilities.Concrete
 {
     public class PlayerInteractionAbility : MonoBehaviour, IPlayerAbility
     {
-        [Header("Properties")] [SerializeField]
+        [Header("Properties")] 
+        [SerializeField]
         private LayerMask m_interactableLayer;
 
         private Ray m_cameraToMouseRay;
