@@ -11,7 +11,6 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         private Renderer m_renderer;
 
         private Color m_myColor;
-        private int m_points;
         private IEnemyParent m_parent;
 
         public IEnemyParent Parent
@@ -48,7 +47,6 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
         public void OnDespawn()
         {
-            m_points = 0;
             m_myColor = Color.clear;
             m_parent = null;
         }
