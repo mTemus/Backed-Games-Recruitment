@@ -18,6 +18,3 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Events.Events
         public void UnregisterListener(ScriptableEventListener<T> listener) => m_listeners.Remove(listener);
     }
 }
-
-
-
