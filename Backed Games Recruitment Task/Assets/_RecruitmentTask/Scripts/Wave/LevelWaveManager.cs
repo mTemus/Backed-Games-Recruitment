@@ -17,10 +17,15 @@ namespace Assets._RecruitmentTask.Scripts.Wave
         [Header("Data")] 
         [SerializeField] 
         private WaveDataSO[] m_levelWavesData;
-        
+
+        [Header("Debug")]
+        [SerializeField]
         private int m_currentWaveIndex = 0;
 
+        [SerializeField]
         private int m_wavePointsToReach = 0;
+
+        [SerializeField]
         private int m_currentWavePoints = 0;
 
         public void OnGameStart()
@@ -37,9 +42,10 @@ namespace Assets._RecruitmentTask.Scripts.Wave
         {
             m_waveEndEvent.Invoke(m_levelWavesData[m_currentWaveIndex]);
 
-            m_currentWaveIndex++;
+            m_currentWavePoints = 0;
+            ++m_currentWaveIndex;
 
-            if (m_currentWaveIndex > m_levelWavesData.Length - 1)
+            if (m_currentWaveIndex >= m_levelWavesData.Length)
                 m_currentWaveIndex = m_levelWavesData.Length - 1;
             
             StartWave();
