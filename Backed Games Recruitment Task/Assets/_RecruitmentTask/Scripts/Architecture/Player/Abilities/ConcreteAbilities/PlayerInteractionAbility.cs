@@ -16,6 +16,14 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Player.Abilities.Concrete
 
         public void UseAbility()
         {
+            // For simplicity
+            if (!enabled)
+            {
+                Debug.LogError($"{GetType().Name} ({name}) --- Trying to use ability that is not enabled!");
+                return;
+            }
+
+
 
         }
     }
