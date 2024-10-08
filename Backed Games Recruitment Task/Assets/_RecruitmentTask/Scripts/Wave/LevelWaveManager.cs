@@ -42,12 +42,12 @@ namespace Assets._RecruitmentTask.Scripts.Wave
             if (m_currentWaveIndex > m_levelWavesData.Length - 1)
                 m_currentWaveIndex = m_levelWavesData.Length - 1;
             
-            m_wavePointsToReach = m_levelWavesData[m_currentWaveIndex].PointsToEarn;   
             StartWave();
         }
 
         public void StartWave()
         {
+            m_wavePointsToReach = m_levelWavesData[m_currentWaveIndex].PointsToEarn;
             m_waveStartEvent.Invoke(m_levelWavesData[m_currentWaveIndex]);
         }
 
