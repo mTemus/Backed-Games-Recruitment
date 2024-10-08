@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets._RecruitmentTask.Scripts.Enemy
 {
-    public class EnemiesController : MonoBehaviour, IEnemyParent
+    public class EnemiesManager : MonoBehaviour, IEnemyParent
     {
         [Header("References")] 
         [SerializeField]
@@ -99,6 +99,14 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         {
             m_currentWaveData = waveData;
             enabled = true;
+        }
+
+        public void OnWaveEnd(WaveDataSO waveData)
+        {
+            enabled = false;
+            m_timerValue.Value.Value = 0;
+
+            m_currentWaveData = null;
         }
 
         public void OnEnemyDeath(EnemyBase enemy)
