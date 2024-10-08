@@ -9,11 +9,12 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Input
         [Header("Input Events")]
         [SerializeField] private ScriptableEventEmpty m_onInteractionStarted;
 
-        private PlayerInput m_playerInput = new PlayerInput();
+        private PlayerInput m_playerInput;
 
 
         private void Awake()
         {
+            m_playerInput = new PlayerInput();
             m_playerInput.PlayerAbilities.Interaction.started += OnInteractionStarted;
         }
 
