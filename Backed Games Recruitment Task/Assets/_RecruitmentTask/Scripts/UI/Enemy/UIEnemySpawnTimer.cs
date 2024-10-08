@@ -24,6 +24,12 @@ namespace Assets._RecruitmentTask.Scripts.UI.Enemy
             m_spawnTimerValue.Value.RemoveChangedListener(OnTimerValueChanged);
         }
 
+        public void OnGameRestart()
+        {
+            m_spawnTimerValue.Value.RemoveChangedListener(OnTimerValueChanged);
+            m_spawnTimerText.text = "0.00";
+        }
+
         private void OnTimerValueChanged(SubscriptableValueBase obj)
         {
             var timer = obj.GetValueAs<float>();

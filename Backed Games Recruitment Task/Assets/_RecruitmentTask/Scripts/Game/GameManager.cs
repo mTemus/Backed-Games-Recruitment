@@ -28,6 +28,7 @@ namespace Assets._RecruitmentTask.Scripts.Game
         public void Restart()
         {
             m_onGameRestartEvent.Invoke(default);
+            m_onGameStartEvent.Invoke(default);
         }
 
         public void Exit()

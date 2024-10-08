@@ -64,5 +64,12 @@ namespace Assets._RecruitmentTask.Scripts.Wave
             if (m_currentWavePoints >= m_wavePointsToReach) 
                 StartNextWave();
         }
+
+        public void OnGameRestart()
+        {
+            m_currentWaveIndex = 0;
+            m_currentWavePoints = 0;
+            m_wavePointsToReach = 0;
+        }
     }
 }

@@ -18,7 +18,6 @@ namespace Assets._RecruitmentTask.Scripts.UI.Wave
         private int m_maxProgress;
         private int m_currentProgress;
 
-
         public void OnWaveStart(WaveDataSO data)
         {
             m_maxProgress = data.PointsToEarn;
@@ -27,10 +26,20 @@ namespace Assets._RecruitmentTask.Scripts.UI.Wave
 
         public void OnWaveEnd(WaveDataSO data)
         {
-            m_currentProgress = 0;
-            m_maxProgress = 0;
+            ClearProgress();
+        }
 
-            UpdateProgress();   
+        public void OnGameRestart()
+        {
+            ClearProgress();
+        }
+
+        private void ClearProgress()
+        {
+            m_maxProgress = 0;
+            m_currentProgress = 0;
+
+            UpdateProgress();
         }
 
         public void OnEnemyDied(EnemiesManager.EnemyDeathData data)

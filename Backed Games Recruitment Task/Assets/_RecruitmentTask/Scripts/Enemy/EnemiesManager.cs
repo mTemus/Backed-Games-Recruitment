@@ -75,9 +75,11 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
             }
         }
 
-        private void DespawnEnemy(EnemyBase enemy, int points)
+        private void DespawnEnemy(EnemyBase enemy, int points, bool sendEvent = true)
         {
-            m_enemyDeathEvent.Invoke(new EnemyDeathData(points, enemy.transform.position, enemy.MyColor));
+            if (sendEvent)
+                m_enemyDeathEvent.Invoke(new EnemyDeathData(points, enemy.transform.position, enemy.MyColor));
+
             LeanPool.Despawn(enemy);
         }
 
@@ -120,10 +122,23 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
         public void OnGameOver()
         {
+            enabled = false;
+
             foreach (var spawnedEnemy in m_spawnedEnemies)
                 DespawnEnemy(spawnedEnemy.Value, 0);
-            
+
             m_spawnedEnemies.Clear();
+        }
+
+        public void OnGameRestart()
+        {
+            enabled = false;
+            foreach (var spawnedEnemy in m_spawnedEnemies)
+                DespawnEnemy(spawnedEnemy.Value, 0, false);
+
+            m_spawnedEnemies.Clear();
+
+            m_timerValue.Value.Value = 0f;
         }
 
         public void OnEnemyDeath(EnemyBase enemy)
