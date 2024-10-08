@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8091471164030871706}
   - component: {fileID: 2083358088745972328}
   - component: {fileID: 7403152174573733720}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: SphereEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
