@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SphereEnemy : MonoBehaviour
+namespace Assets._RecruitmentTask.Scripts.Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SphereEnemy : EnemyBase
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+   
     }
 }
