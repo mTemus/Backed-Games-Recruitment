@@ -14,7 +14,11 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         private ScriptableSubscriptableValueFloat m_timerValue;
 
         [Header("Events")] 
-        [SerializeField] private ScriptableEventEmpty m_cannotSpawnEvent;
+        [SerializeField] 
+        private ScriptableEventEmpty m_cannotSpawnEvent;
+
+        [SerializeField]
+        private ScriptableEventEnemyDeathData m_enemyDeathEvent;
 
         [Header("Properties")]
         [SerializeField]
@@ -40,6 +44,12 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
             SpawnEnemy();
             SetTimer();
+        }
+
+        private void OnDestroy()
+        {
+            m_timerValue.Value.RemoveAllChangedListeners();
+            m_timerValue.Value.Value = 0;
         }
 
         private void SpawnEnemy()
@@ -92,7 +102,28 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
         public void OnEnemyDeath(EnemyBase enemy)
         {
-            
+            foreach (var spawnedEnemy in m_spawnedEnemies)
+            {
+                if (spawnedEnemy.Value != enemy) 
+                    continue;
+
+                m_spawnedEnemies[spawnedEnemy.Key] = null;
+                break;
+            }
+
+            m_enemyDeathEvent.Invoke(new EnemyDeathData(enemy.Points, enemy.transform.position));
+        }
+
+        public struct EnemyDeathData
+        {
+            public int Points;
+            public Vector3 Position;
+
+            public EnemyDeathData(int points, Vector3 position)
+            {
+                Points = points;
+                Position = position;
+            }
         }
     }
 }

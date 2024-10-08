@@ -177,6 +177,11 @@ namespace Assets.Repos.Codebase.Code.Core.SubscripableValue
             }
         }
 
+        public void RemoveAllChangedListeners()
+        {
+            m_onValueChangedListeners.Clear();
+        }
+
         #endregion
     }
 }
