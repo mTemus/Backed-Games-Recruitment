@@ -31,9 +31,6 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
         private void Awake()
         {
             enabled = false;
-
-            foreach (var enemySlot in GetComponentsInChildren<EnemySlot>())
-                m_spawnedEnemies.Add(enemySlot, null);
         }
 
         private void Update()
@@ -78,6 +75,12 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
             }
         }
 
+        private void DespawnEnemy(EnemyBase enemy, int points)
+        {
+            m_enemyDeathEvent.Invoke(new EnemyDeathData(points, enemy.transform.position, enemy.MyColor));
+            LeanPool.Despawn(enemy);
+        }
+
         private bool TryGetFreeSlot(out EnemySlot freeSlot)
         {
             foreach (var pair in m_spawnedEnemies.Where(pair => pair.Value == null))
@@ -95,6 +98,12 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
             m_timerValue.Value.Value = m_currentWaveData.EnemiesSpawnTime;
         }
 
+        public void OnGameStart()
+        {
+            foreach (var enemySlot in GetComponentsInChildren<EnemySlot>())
+                m_spawnedEnemies.Add(enemySlot, null);
+        }
+
         public void OnWaveStart(WaveDataSO waveData)
         {
             m_currentWaveData = waveData;
@@ -109,6 +118,14 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
             m_currentWaveData = null;
         }
 
+        public void OnGameOver()
+        {
+            foreach (var spawnedEnemy in m_spawnedEnemies)
+                DespawnEnemy(spawnedEnemy.Value, 0);
+            
+            m_spawnedEnemies.Clear();
+        }
+
         public void OnEnemyDeath(EnemyBase enemy)
         {
             foreach (var spawnedEnemy in m_spawnedEnemies)
@@ -120,8 +137,7 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
                 break;
             }
 
-            m_enemyDeathEvent.Invoke(new EnemyDeathData(enemy.Points, enemy.transform.position, enemy.MyColor));
-            LeanPool.Despawn(enemy);    
+            DespawnEnemy(enemy, enemy.Points);
         }
 
         public struct EnemyDeathData

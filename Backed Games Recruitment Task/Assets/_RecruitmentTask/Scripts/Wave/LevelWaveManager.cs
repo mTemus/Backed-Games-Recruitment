@@ -35,6 +35,8 @@ namespace Assets._RecruitmentTask.Scripts.Wave
 
         private void StartNextWave()
         {
+            m_waveEndEvent.Invoke(m_levelWavesData[m_currentWaveIndex]);
+
             m_currentWaveIndex++;
 
             if (m_currentWaveIndex > m_levelWavesData.Length - 1)
