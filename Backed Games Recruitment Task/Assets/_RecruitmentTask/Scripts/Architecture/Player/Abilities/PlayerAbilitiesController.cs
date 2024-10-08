@@ -12,7 +12,7 @@ namespace Assets._RecruitmentTask.Scripts.Architecture.Player.Abilities
         {
             enabled = false;
 
-            foreach (var ability in GetComponents<IPlayerAbility>())
+            foreach (var ability in GetComponentsInChildren<IPlayerAbility>())
                 m_playerAbilities.Add(ability);
     
             DisableAllAbilities();
