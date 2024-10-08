@@ -3,6 +3,7 @@ using System.Linq;
 using Assets._RecruitmentTask.Scripts.Architecture.Events.ConcreteEvents;
 using Assets._RecruitmentTask.Scripts.Architecture.Other.SubscriptableValue.ConcreteScriptableValue;
 using Assets._RecruitmentTask.Scripts.Wave.Data;
+using Lean.Pool;
 using UnityEngine;
 
 namespace Assets._RecruitmentTask.Scripts.Enemy
@@ -111,18 +112,21 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
                 break;
             }
 
-            m_enemyDeathEvent.Invoke(new EnemyDeathData(enemy.Points, enemy.transform.position));
+            m_enemyDeathEvent.Invoke(new EnemyDeathData(enemy.Points, enemy.transform.position, enemy.MyColor));
+            LeanPool.Despawn(enemy);    
         }
 
         public struct EnemyDeathData
         {
             public int Points;
             public Vector3 Position;
+            public Color Color;
 
-            public EnemyDeathData(int points, Vector3 position)
+            public EnemyDeathData(int points, Vector3 position, Color color)
             {
                 Points = points;
                 Position = position;
+                Color = color;
             }
         }
     }

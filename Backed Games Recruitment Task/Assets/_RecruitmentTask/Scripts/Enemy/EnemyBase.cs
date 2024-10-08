@@ -14,6 +14,7 @@ namespace Assets._RecruitmentTask.Scripts.Enemy
 
         public int Points { get; set; }
         public IEnemyParent Parent { get; set; }
+        public Color MyColor => m_myColor;
 
 
         public void SetColor(Color color)
