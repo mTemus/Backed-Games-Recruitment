@@ -20,7 +20,7 @@ namespace Assets._RecruitmentTask.Scripts.UI.Game
 
         public override void Show()
         {
-            m_scoreText.text = m_playerPoints.Value.ToString();
+            m_scoreText.text = m_playerPoints.Value.Value.ToString();
             gameObject.SetActive(true);
         }
 
